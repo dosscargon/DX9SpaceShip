@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Meteor.cpp" />
     <ClCompile Include="source\DirectX.cpp" />
     <ClCompile Include="source\GameObject.cpp" />
     <ClCompile Include="source\GameScene.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="source\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Meteor.h" />
     <ClInclude Include="source\DirectX.h" />
     <ClInclude Include="source\GameObject.h" />
     <ClInclude Include="source\GameScene.h" />
@@ -42,6 +44,7 @@
     <ClInclude Include="source\SceneManager.h" />
     <ClInclude Include="source\Sound.h" />
     <ClInclude Include="source\SpaceShip.h" />
+    <ClInclude Include="source\Transform.h" />
     <ClInclude Include="source\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

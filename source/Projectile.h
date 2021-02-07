@@ -1,7 +1,12 @@
 #pragma once
+#include<cmath>
 #include "GameObject.h"
+#include "Meteor.h"
 #include "Scene.h"
 #include "Input.h"
+#include "Sound.h"
+
+using std::weak_ptr;
 
 class Projectile : public GameObject {
 public:
@@ -9,6 +14,12 @@ public:
 	virtual void Update(const Scene& scene) override;
 	//•ûŒüŒˆ’è
 	void SetAngle(float angle);
+
+	//è¦Î‚Æ‚ÌÕ“Ë”»’è
+	bool GetHitMeteor(forward_list<weak_ptr<Meteor>>& meteors);
+
+	//À•W‚ğŒvZ
+	D3DVECTOR&& GetPosition();
 private:
 	//i‚ñ‚¾‹——£
 	float distance = 0.0f;
@@ -19,4 +30,8 @@ private:
 	static const float SPEED;
 	//Á‚¦‚é‹——£
 	static const float DISTANCE_LIMIT;
+	//è¦Î‚Ì‚ ‚½‚è”»’è
+	static const float METEOR_HIT_DISTANCE;
+
+	float calculateDistance(D3DVECTOR a, D3DVECTOR b);
 };

@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "Scene.h"
 #include "Input.h"
+#include<cmath>
 
 class SpaceShip : public GameObject{
 public:
@@ -15,4 +16,6 @@ private:
 
 	//‰ñ“]ƒXƒs[ƒh
 	static const float SPEED;
+	//‰ñ“]ŒÀŠE
+	static const float ANGLE_LIMIT;
 };

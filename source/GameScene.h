@@ -7,6 +7,7 @@
 #include "GameObject.h"
 #include "SpaceShip.h"
 #include "Projectile.h"
+#include "Meteor.h"
 
 using std::forward_list;
 using std::shared_ptr;
@@ -21,5 +22,10 @@ public:
 private:
 	//スペースシップの参照
 	weak_ptr<SpaceShip> spaceShip;
+	//弾参照リスト
+	forward_list<weak_ptr<Projectile>> projectiles;
+	//隕石参照リスト
+	forward_list<weak_ptr<Meteor>> meteors;
+
 };
 

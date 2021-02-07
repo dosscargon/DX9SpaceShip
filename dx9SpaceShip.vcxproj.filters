@@ -48,6 +48,9 @@
     <ClCompile Include="source\SceneManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="source\Meteor.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Sound.h">
@@ -81,6 +84,12 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\SceneManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Transform.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Meteor.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

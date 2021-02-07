@@ -17,14 +17,16 @@ bool GameScene::Initialize() {
 	DirectX::GetDirect3DDevice().SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
 	//スペースシップ生成
-	shared_ptr<SpaceShip> ptr=make_shared<SpaceShip>();
-	spaceShip = ptr;
-	gameObjects.push_front(move(ptr));
+	shared_ptr<SpaceShip> newSpaceShip=make_shared<SpaceShip>();
+	spaceShip = newSpaceShip;
+	gameObjects.push_front(move(newSpaceShip));
 
 	//オブジェクト初期化
 	for (auto& gameobject : gameObjects) {
 		gameobject->Initialize();
 	}
+
+	Sound::Play(SoundID::BGM);
 
 	return true;
 }
@@ -45,21 +47,46 @@ void GameScene::Update() {
 	D3DXVECTOR3 upVec(0.0f, 1.0f, 0.0f);
 	D3DXMatrixLookAtLH(&viewMatrix, &cameraPos, &targetPos, &upVec);
 
-	//キーを押されたら弾生成
-	if (Input::GetKeyDown(Keys::SHOOT_KEY)) {
-		shared_ptr<Projectile> ptr = make_shared<Projectile>();
-		ptr->Initialize();
-		ptr->SetAngle(spaceShip.lock()->GetAngle());
-		gameObjects.push_front(move(ptr));
+	if (!spaceShip.expired()) {
+		//キーを押されたら弾生成
+		if (Input::GetKeyDown(Keys::SHOOT_KEY)) {
+			shared_ptr<Projectile> newProjectile = make_shared<Projectile>();
+			newProjectile->Initialize();
+			newProjectile->SetAngle(spaceShip.lock()->GetAngle());
+			projectiles.push_front(newProjectile);
+			gameObjects.push_front(move(newProjectile));
 
-		Sound::Play();
-	}
+			Sound::Play(SoundID::SHOOT);
+		}
 
-	//オブジェクト更新
-	for (auto& gameObject : gameObjects) {
-		gameObject->Update(*this);
+		//一定時間ごとに隕石生成
+		static int counter = 0;
+		++counter;
+		if (counter > 180) {
+			shared_ptr<Meteor> newMeteor = make_shared<Meteor>();
+			newMeteor->Initialize();
+			meteors.push_front(newMeteor);
+			gameObjects.push_front(move(newMeteor));
+			counter = 0;
+		}
+
+
+		//オブジェクト更新
+		for (auto& gameObject : gameObjects) {
+			gameObject->Update(*this);
+		}
+
+		//衝突判定
+		for (auto& projectile : projectiles) {
+			projectile.lock()->GetHitMeteor(meteors);
+		}
+		for (auto& meteor : meteors) {
+			meteor.lock()->GetHitSpaceShip(*spaceShip.lock());
+		}
 	}
 
 	//削除すべきオブジェクトを削除
 	gameObjects.remove_if([](auto& x) {return x->GetDelete(); });
+	projectiles.remove_if([](auto& x) {return x.expired(); });
+	meteors.remove_if([](auto& x) {return x.expired(); });
 }

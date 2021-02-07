@@ -15,14 +15,14 @@ public:
 	void Render();
 	//消される予定か
 	bool GetDelete();
+	//オブジェクト消去の予約
+	void DeleteThis();
 
 	~GameObject();
 protected:
 	//xファイルの読み込みとかをする
 	//派生クラスのInitialize()から呼ぶ
 	bool Initialize(const char* filePath);
-	//オブジェクト消去の予約
-	void DeleteThis();
 
 	//ワールド座標
 	D3DXMATRIX worldMatrix;
