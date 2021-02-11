@@ -1,16 +1,9 @@
 #include "Meteor.h"
 
-//スピード
-const float Meteor::SPEED = 0.5f;
-//出現位置
-const float Meteor::INITIAL_DISTANCE = 120.0f;
-//スペースシップとぶつかる距離
-const float Meteor::HIT_DISTANCE = 2.0f;
-
 bool Meteor::Initialize() {
 	random_device rand;
 	angle = ((float)(rand() % 30) - 15.0f) * std::acosf(-1) / 180.0f;
-	return GameObject::Initialize("assets/meteor.x");
+	return GameObject::Initialize(XFILE_PATH);
 }
 
 void Meteor::Update(const Scene& scene) {

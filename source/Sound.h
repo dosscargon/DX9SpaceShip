@@ -45,6 +45,11 @@ private:
 	static array<LPDIRECTSOUNDBUFFER, (size_t)SoundID::ID_COUNT> secondaryBuffer;
 
 	//wavファイルのパス
-	static const array<LPWSTR, (size_t)SoundID::ID_COUNT> FILE_PATH;
+	static constexpr array<LPWSTR, (size_t)SoundID::ID_COUNT> FILE_PATH = {
+		(LPWSTR)L"assets/Thinking_Hero.wav" ,
+		(LPWSTR)L"assets/pochi.wav" ,
+		(LPWSTR)L"assets/hit.wav" ,
+		(LPWSTR)L"assets/buun.wav"
+	};
 };
 

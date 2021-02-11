@@ -3,15 +3,8 @@
 using std::sin;
 using std::cos;
 
-//スピード
-const float Projectile::SPEED = 1.0f;
-//消える距離
-const float Projectile::DISTANCE_LIMIT = 120.0f;
-//隕石のあたり判定
-const float Projectile::METEOR_HIT_DISTANCE = 1.5f;
-
 bool Projectile::Initialize() {
-	return GameObject::Initialize("assets/tama.x");
+	return GameObject::Initialize(XFILE_PATH);
 }
 
 void Projectile::Update(const Scene& scene) {

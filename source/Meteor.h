@@ -15,6 +15,7 @@ class Meteor : public GameObject {
 public:
 	virtual bool Initialize() override;
 	virtual void Update(const Scene& scene) override;
+
 	//方向決定
 	void SetAngle(float angle);
 
@@ -29,10 +30,12 @@ private:
 	//方向
 	float angle;
 
+	//xファイルパス
+	static constexpr char XFILE_PATH[] = "assets/meteor.x";
 	//スピード
-	static const float SPEED;
+	static constexpr float SPEED = 0.5f;
 	//消える距離
-	static const float INITIAL_DISTANCE;
+	static constexpr float INITIAL_DISTANCE = 120.0f;
 	//スペースシップとぶつかる距離
-	static const float HIT_DISTANCE;
+	static constexpr float HIT_DISTANCE = 2.0f;
 };

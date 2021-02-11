@@ -26,12 +26,14 @@ private:
 	//方向
 	float angle = 0.0f;
 
+	//xファイルパス
+	static constexpr char XFILE_PATH[] = "assets/tama.x";
 	//スピード
-	static const float SPEED;
+	static constexpr float SPEED = 1.0f;
 	//消える距離
-	static const float DISTANCE_LIMIT;
+	static constexpr float DISTANCE_LIMIT = 120.0f;
 	//隕石のあたり判定
-	static const float METEOR_HIT_DISTANCE;
+	static constexpr float METEOR_HIT_DISTANCE = 1.5f;
 
 	float calculateDistance(D3DVECTOR a, D3DVECTOR b);
 };

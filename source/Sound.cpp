@@ -3,12 +3,12 @@
 LPDIRECTSOUND8 Sound::directSound;
 array<LPDIRECTSOUNDBUFFER, (size_t)SoundID::ID_COUNT> Sound::secondaryBuffer;
 
-const array<LPWSTR, (size_t)SoundID::ID_COUNT> Sound::FILE_PATH = {
-	(LPWSTR)L"assets/Thinking_Hero.wav" ,
-	(LPWSTR)L"assets/pochi.wav" ,
-	(LPWSTR)L"assets/hit.wav" ,
-	(LPWSTR)L"assets/buun.wav"
-};
+//constexpr array<LPWSTR, (size_t)SoundID::ID_COUNT> Sound::FILE_PATH = {
+//	(LPWSTR)L"assets/Thinking_Hero.wav" ,
+//	(LPWSTR)L"assets/pochi.wav" ,
+//	(LPWSTR)L"assets/hit.wav" ,
+//	(LPWSTR)L"assets/buun.wav"
+//};
 
 //èâä˙âª
 bool Sound::Initialize(HWND hwnd) {

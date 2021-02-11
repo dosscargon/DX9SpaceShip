@@ -14,8 +14,10 @@ private:
 	//方向
 	float angle = 0.0f;
 
+	//xファイルパス
+	static constexpr char XFILE_PATH[] = "assets/spaceship.x";
 	//回転スピード
-	static const float SPEED;
+	static constexpr float SPEED=2;
 	//回転限界
-	static const float ANGLE_LIMIT;
+	static constexpr float ANGLE_LIMIT = 30;
 };

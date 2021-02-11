@@ -1,11 +1,11 @@
 #include "SpaceShip.h"
-
-//回転スピード
-const float SpaceShip::SPEED = 2;
-const float SpaceShip::ANGLE_LIMIT = 30;
+//
+////回転スピード
+//constexpr float SpaceShip::SPEED = 2;
+//constexpr float SpaceShip::ANGLE_LIMIT = 30;
 
 bool SpaceShip::Initialize() {
-	return GameObject::Initialize("assets/spaceship.x");
+	return GameObject::Initialize(XFILE_PATH);
 }
 
 void SpaceShip::Update(const Scene& scene) {
