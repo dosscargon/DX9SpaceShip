@@ -3,8 +3,8 @@
 using std::sin;
 using std::cos;
 
-bool Projectile::Initialize() {
-	return GameObject::Initialize(XFILE_PATH);
+Projectile::Projectile() {
+	xfileID = XFileID::PROJECTILE;
 }
 
 void Projectile::Update(const Scene& scene) {

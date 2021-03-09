@@ -13,7 +13,8 @@ using std::random_device;
 
 class Meteor : public GameObject {
 public:
-	virtual bool Initialize() override;
+	Meteor();
+
 	virtual void Update(const Scene& scene) override;
 
 	//•ûŒüŒˆ’è

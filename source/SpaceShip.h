@@ -6,7 +6,7 @@
 
 class SpaceShip : public GameObject{
 public:
-	virtual bool Initialize() override;
+	SpaceShip();
 	virtual void Update(const Scene& scene) override;
 	//•ûŒüŽæ“¾
 	float GetAngle();

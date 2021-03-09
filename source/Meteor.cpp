@@ -1,9 +1,9 @@
 #include "Meteor.h"
 
-bool Meteor::Initialize() {
+Meteor::Meteor() {
 	random_device rand;
 	angle = ((float)(rand() % 30) - 15.0f) * std::acosf(-1) / 180.0f;
-	return GameObject::Initialize(XFILE_PATH);
+	xfileID = XFileID::METEOR;
 }
 
 void Meteor::Update(const Scene& scene) {

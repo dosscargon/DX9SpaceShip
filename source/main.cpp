@@ -16,6 +16,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	DirectX::Initialize(Window::GetWindowHandle(), width, height, false);
 	Sound::Initialize(Window::GetWindowHandle());
 	Input::Initialize(hInstance, Window::GetWindowHandle());
+	GameObject::Initialize();
 	SceneManager::ChangeScene(new GameScene());
 
 	//ÉãÅ[Év
@@ -36,6 +37,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		}
 	}
 	//èIóπèàóù
+	GameObject::Finalize();
 	Input::Finalize();
 	Sound::Finalize();
 	DirectX::Finalize();

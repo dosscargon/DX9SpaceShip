@@ -5,10 +5,20 @@
 //クラスのプロトタイプ宣言（循環参照回避）
 class Scene;
 
+//xファイルのID
+enum class XFileID {
+	SPACE_SHIP,
+	PROJECTILE,
+	METEOR,
+	ID_COUNT//種類数
+};
+
 class GameObject {
 public:
-	//初期化．派生クラスから呼び出してxファイルパスを指定させよう
-	virtual bool Initialize() = 0;
+	//各xファイルの読み込み
+	static void Initialize();
+	//終了処理
+	static void Finalize();
 	//更新
 	virtual void Update(const Scene& scene) = 0;
 	//描画
@@ -17,26 +27,33 @@ public:
 	bool GetDelete();
 	//オブジェクト消去の予約
 	void DeleteThis();
-
-	~GameObject();
 protected:
-	//xファイルの読み込みとかをする
-	//派生クラスのInitialize()から呼ぶ
-	bool Initialize(const char* filePath);
-
 	//ワールド座標
 	D3DXMATRIX worldMatrix;
 
-private:
+	//xファイルパス
+	static constexpr const char* FILE_PATH[] = {
+		"assets/spaceship.x",
+		"assets/tama.x",
+		"assets/meteor.x"
+	};
+
 	//xファイルのあれこれをまとめた構造体
 	struct XFile {
-		DWORD MaterialNum;
-		LPD3DXMESH Meshes;
-		LPD3DXBUFFER Materials;
+		DWORD MaterialNum = -1;
+		LPD3DXMESH Meshes = NULL;
+		LPD3DXBUFFER Materials = NULL;
 	};
-	XFile xfileData;
+	//各xファイル
+	static XFile xFileDatas[(int)XFileID::ID_COUNT];
+	//使用するxファイルID
+	XFileID xfileID;
 
+private:
 	//消される予定か
-	bool deleteFlag;
+	bool deleteFlag = false;
+
+	//xファイル読み込み
+	static XFile& LoadXFile(const char* filePath);
 };
 

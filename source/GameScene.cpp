@@ -21,11 +21,6 @@ bool GameScene::Initialize() {
 	spaceShip = newSpaceShip;
 	gameObjects.push_front(move(newSpaceShip));
 
-	//オブジェクト初期化
-	for (auto& gameobject : gameObjects) {
-		gameobject->Initialize();
-	}
-
 	Sound::Play(SoundID::BGM);
 
 	return true;
@@ -51,7 +46,6 @@ void GameScene::Update() {
 		//キーを押されたら弾生成
 		if (Input::GetKeyDown(Keys::SHOOT_KEY)) {
 			shared_ptr<Projectile> newProjectile = make_shared<Projectile>();
-			newProjectile->Initialize();
 			newProjectile->SetAngle(spaceShip.lock()->GetAngle());
 			projectiles.push_front(newProjectile);
 			gameObjects.push_front(move(newProjectile));
@@ -64,7 +58,6 @@ void GameScene::Update() {
 		++counter;
 		if (counter > 180) {
 			shared_ptr<Meteor> newMeteor = make_shared<Meteor>();
-			newMeteor->Initialize();
 			meteors.push_front(newMeteor);
 			gameObjects.push_front(move(newMeteor));
 			counter = 0;

@@ -10,7 +10,8 @@ using std::weak_ptr;
 
 class Projectile : public GameObject {
 public:
-	virtual bool Initialize() override;
+	Projectile();
+
 	virtual void Update(const Scene& scene) override;
 	//•ûŒüŒˆ’è
 	void SetAngle(float angle);
