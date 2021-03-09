@@ -1,6 +1,5 @@
 #pragma once
 #include<dsound.h>
-#include <array>
 #include "DirectX.h"
 
 #pragma comment(lib, "dsound.lib")
@@ -42,10 +41,10 @@ private:
 	//インターフェース
 	static LPDIRECTSOUND8 directSound;
 	//セカンダリバッファ
-	static array<LPDIRECTSOUNDBUFFER, (size_t)SoundID::ID_COUNT> secondaryBuffer;
+	static LPDIRECTSOUNDBUFFER secondaryBuffer[(int)SoundID::ID_COUNT];
 
 	//wavファイルのパス
-	static constexpr array<LPWSTR, (size_t)SoundID::ID_COUNT> FILE_PATH = {
+	static constexpr LPWSTR FILE_PATH[] = {
 		(LPWSTR)L"assets/Thinking_Hero.wav" ,
 		(LPWSTR)L"assets/pochi.wav" ,
 		(LPWSTR)L"assets/hit.wav" ,
